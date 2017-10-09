@@ -1,7 +1,8 @@
+; https://github.com/Michaelangel007/apple2_hgr_packer
 ; Michael Pohoreski
-; github
+;
 ; HGR Packer/Unpacker by removing/adding HGR screen holes
-; Pack 8,192 bytes down to 8,192-512 = 7,680 = 30 sectors instead of 34 sectors
+; Pack 8,192 bytes down to 8,192-512 = 7,680 = 30 sectors instead of 32 sectors
 ; Remove the "screen holes" by "sliding" remaining memory down over them
 ; Basically a glorified memcpy()
 ;
@@ -162,8 +163,9 @@
 ; Last Packed Byte:  $5DFF
 
 ; Each page of HGR memory has 6 scanlines
-;   First Half of Page ($78 bytes) = 3 scanlines
-;   Last  Half of Page ($78 bytes) = 3 scanlines
+; First Half of Page ($78 bytes) = 3 scanlines
+; Last  Half of Page ($78 bytes) = 3 scanlines
+
 Row = $FB   ; 6 scanlines/page processed per loop
 Dst = $FC
 Src = $FE
